@@ -1,0 +1,47 @@
+contact = {}
+
+def view_contact():
+    print("Name\t\tContact Number")
+    for key in contact:
+        print("{}\t\t{}" .format,(key,contact.get(key)))
+
+while True:
+    choice = int(input("\n 1. Add new contact \n 2. view contact list \n 3. search contact \n 4. update contact \n 5. Delete contact \n 6. exit\n ENTER YOUR CHOICE "))
+    if choice == 1:
+        name = input("ENTER THE CONTACT NAME \n ")
+        phone = input("ENTER THE MOBILE NUMBER \n")
+        contact[name] = phone
+    elif choice == 2:
+        if not contact:
+            print("empty contact book")
+        else:
+            view_contact()
+    elif choice == 3:
+        search_name = input("enter the contact name ")
+        if search_name in contact:
+            print(search_name,"'s contact number is ",contact[search_name])
+        else:
+            print("name is not found in contact book")
+    elif choice == 4:
+        update_contact = input("ENTER THE CONTACT TO BE UPDATED")
+        if update_contact in contact:
+            phone = input("ENTER MOB NUMBER")
+            contact[update_contact]=phone
+            print("contact updated successfully")
+            view_contact()
+        else:
+            print("Name is not found in contact book")
+    elif choice == 5:
+        del_contact = input("ENTER THE CONTACT TO BE DELETED")
+        if del_contact in contact:
+            confirm = input("Do you want to remove the conatct yes/no? ")
+            if confirm == 'y' or confirm == 'Y':
+                contact.pop(del_contact)
+            view_contact()
+        else:
+             print("name is not found in contact book")
+    else:
+        break
+
+
+
